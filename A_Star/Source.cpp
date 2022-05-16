@@ -207,23 +207,26 @@ vector<vector<float>> getMaze() {
 
 	fstream my_file;
 	my_file.open("my_file.txt", ios::in);
-	string ch;
+	string st;
 
 
 	vector<float> temp;
+  bool done = false;
 	while (1) {
+  if (done) {
+    break;
+  }
 
-
-		my_file >> ch;
+		my_file >> st;
 		if (my_file.eof())
-			break;
-		if (ch == "end") {
+			done = true;
+		if (st == "end") {
 			maze.push_back(temp);
 			temp = {};
 			continue;
 		}
 
-		temp.push_back(stof(ch));
+		temp.push_back(stof(st));
 
 	}
 
